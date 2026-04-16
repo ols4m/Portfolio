@@ -1,1 +1,1127 @@
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samuel Senyo — Portfolio</title>
+<style>
+html, body { background-color: #080808 !important; color: #f0ede6 !important; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+html, body { background-color: #080808 !important; color: #f0ede6 !important; }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–black: #080808;
+–off-white: #f0ede6;
+–cream: #d6d0c4;
+–gold: #c9a84c;
+–rust: #c0441e;
+–slate: #14141c;
+–mid: #5a5a62;
+–mono: ‘DM Mono’, ‘Courier New’, monospace;
+–display: ‘Bebas Neue’, ‘Arial Narrow’, Arial, sans-serif;
+–serif: ‘Playfair Display’, Georgia, serif;
+}
+
+html { scroll-behavior: smooth; background-color: #080808; }
+body {
+background: #080808;
+color: #f0ede6;
+font-family: var(–mono);
+font-size: 14px;
+line-height: 1.7;
+overflow-x: hidden;
+}
+
+/* ── CURSOR ── */
+.cursor { width:10px; height:10px; background:var(–gold); border-radius:50%; position:fixed; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .15s,height .15s; mix-blend-mode:difference; }
+.cursor-ring { width:38px; height:38px; border:1px solid rgba(201,168,76,.45); border-radius:50%; position:fixed; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:transform .12s ease-out,border-color .2s; }
+
+/* ── NAV ── */
+nav {
+position:fixed; top:0; left:0; right:0; z-index:200;
+display:flex; justify-content:space-between; align-items:center;
+padding:18px 52px;
+background:linear-gradient(to bottom,rgba(8,8,8,.96) 60%,transparent);
+}
+.nav-logo { font-family:var(–display); font-size:22px; letter-spacing:3px; color:var(–gold); text-decoration:none; }
+.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links a { font-family:var(–mono); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(–cream); text-decoration:none; opacity:.6; transition:opacity .2s,color .2s; }
+.nav-links a:hover { opacity:1; color:var(–gold); }
+
+/* ── HERO ── */
+#hero {
+min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end;
+padding:0 52px 72px;
+position:relative; overflow:hidden;
+}
+.hero-bg {
+position:absolute; inset:0; z-index:0;
+background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,.07) 0%, transparent 70%),
+radial-gradient(ellipse 40% 40% at 20% 80%, rgba(192,68,30,.08) 0%, transparent 60%),
+var(–black);
+}
+.hero-grid {
+position:absolute; inset:0; z-index:0;
+background-image:
+linear-gradient(rgba(201,168,76,.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(201,168,76,.04) 1px, transparent 1px);
+background-size:60px 60px;
+}
+.hero-content { position:relative; z-index:1; }
+.hero-tag { font-family:var(–mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(–gold); margin-bottom:16px; opacity:.8; }
+.hero-name {
+font-family:var(–display); font-size:clamp(80px,14vw,180px);
+line-height:.9; letter-spacing:2px; color:var(–off-white);
+margin-bottom:8px;
+}
+.hero-name span { color:var(–gold); }
+.hero-subtitle { font-family:var(–serif); font-style:italic; font-size:clamp(16px,2.5vw,26px); color:var(–cream); opacity:.7; margin-bottom:32px; }
+.hero-meta { display:flex; gap:40px; flex-wrap:wrap; }
+.hero-meta-item { display:flex; flex-direction:column; gap:4px; }
+.hero-meta-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(–mid); }
+.hero-meta-value { font-size:13px; color:var(–cream); }
+.hero-scroll { position:absolute; right:52px; bottom:72px; z-index:1; display:flex; flex-direction:column; align-items:center; gap:8px; }
+.hero-scroll span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(–mid); writing-mode:vertical-rl; }
+.scroll-line { width:1px; height:60px; background:linear-gradient(to bottom,var(–gold),transparent); animation:scrollpulse 2s ease-in-out infinite; }
+@keyframes scrollpulse { 0%,100%{opacity:.3;transform:scaleY(.6)} 50%{opacity:1;transform:scaleY(1)} }
+
+/* ── SECTION BASE ── */
+section { padding:100px 52px; }
+.section-label { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(–gold); margin-bottom:16px; }
+.section-title { font-family:var(–display); font-size:clamp(42px,6vw,80px); letter-spacing:2px; line-height:1; margin-bottom:48px; }
+.divider { width:100%; height:1px; background:linear-gradient(to right,var(–gold),transparent); margin:0 0 64px; opacity:.2; }
+
+/* ── ABOUT ── */
+#about { background:#14141c; }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+.about-text p { color:var(–cream); opacity:.85; margin-bottom:20px; font-size:15px; line-height:1.9; }
+.about-text p strong { color:var(–gold); font-weight:500; }
+.about-stats { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.stat-box {
+background:rgba(201,168,76,.05); border:1px solid rgba(201,168,76,.1);
+padding:28px 24px;
+transition:background .25s,border-color .25s;
+}
+.stat-box:hover { background:rgba(201,168,76,.1); border-color:rgba(201,168,76,.3); }
+.stat-num { font-family:var(–display); font-size:52px; color:var(–gold); line-height:1; }
+.stat-desc { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(–mid); margin-top:6px; }
+
+/* ── PROJECTS ── */
+#projects { background:#080808; }
+.projects-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:64px; flex-wrap:wrap; gap:20px; }
+.projects-intro { max-width:480px; color:var(–cream); opacity:.7; }
+
+/* Featured project card */
+.project-featured {
+display:grid; grid-template-columns:1fr 1fr; gap:0;
+border:1px solid rgba(201,168,76,.15); margin-bottom:24px;
+overflow:hidden; transition:border-color .3s;
+}
+.project-featured:hover { border-color:rgba(201,168,76,.4); }
+.project-featured-visual {
+background:#14141c;
+min-height:400px; display:flex; align-items:center; justify-content:center;
+font-family:var(–display); font-size:120px; color:rgba(201,168,76,.1);
+position:relative; overflow:hidden;
+}
+.project-featured-visual::before {
+content:’’; position:absolute; inset:0;
+background:radial-gradient(circle at 50% 50%, rgba(201,168,76,.08) 0%, transparent 70%);
+}
+.project-icon-lg { position:relative; z-index:1; font-size:80px; line-height:1; }
+.project-featured-content { padding:48px; display:flex; flex-direction:column; justify-content:space-between; }
+.project-tag { display:inline-block; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(–rust); border:1px solid var(–rust); padding:4px 10px; margin-bottom:20px; width:fit-content; }
+.project-name { font-family:var(–display); font-size:52px; letter-spacing:2px; color:var(–off-white); margin-bottom:12px; }
+.project-tagline { font-family:var(–serif); font-style:italic; font-size:18px; color:var(–gold); margin-bottom:20px; }
+.project-desc { color:var(–cream); opacity:.8; font-size:14px; line-height:1.85; margin-bottom:28px; }
+.project-features { list-style:none; margin-bottom:28px; }
+.project-features li { padding:10px 0; border-bottom:1px solid rgba(255,255,255,.06); font-size:13px; color:var(–cream); opacity:.75; display:flex; gap:12px; }
+.project-features li::before { content:‘→’; color:var(–gold); flex-shrink:0; }
+.project-tech { display:flex; flex-wrap:wrap; gap:8px; }
+.tech-chip { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(–mid); border:1px solid rgba(255,255,255,.1); padding:4px 10px; }
+
+/* Sub-apps grid */
+.subapps-title { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(–gold); margin-bottom:4px; opacity:.6; }
+.subapps-label { font-family:var(–serif); font-style:italic; font-size:14px; color:var(–cream); opacity:.6; margin-bottom:24px; }
+.subapps-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:2px; margin-bottom:48px; }
+.subapp-card {
+background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+padding:28px 24px;
+transition:background .25s, border-color .25s, transform .2s;
+}
+.subapp-card:hover { background:rgba(201,168,76,.05); border-color:rgba(201,168,76,.2); transform:translateY(-2px); }
+.subapp-icon { font-size:28px; margin-bottom:16px; color:rgba(201,168,76,0.45); width:28px; height:28px; }
+.subapp-name { font-family:var(–display); font-size:24px; letter-spacing:1px; color:var(–off-white); margin-bottom:8px; }
+.subapp-desc { font-size:12px; color:var(–cream); opacity:.6; line-height:1.7; }
+
+/* Small project cards */
+.projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:2px; }
+.project-card {
+background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+padding:36px 32px;
+transition:background .25s,border-color .25s,transform .2s;
+display:flex; flex-direction:column;
+}
+.project-card:hover { background:rgba(201,168,76,.05); border-color:rgba(201,168,76,.2); transform:translateY(-3px); }
+.card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; }
+.card-num { font-family:var(–display); font-size:40px; color:rgba(201,168,76,.2); line-height:1; }
+.card-status { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(–rust); }
+.card-title { font-family:var(–display); font-size:28px; letter-spacing:1px; margin-bottom:10px; }
+.card-desc { color:var(–cream); opacity:.7; font-size:13px; line-height:1.8; flex:1; margin-bottom:20px; }
+.card-tech { display:flex; flex-wrap:wrap; gap:6px; }
+.card-tech span { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(–mid); border:1px solid rgba(255,255,255,.08); padding:3px 8px; }
+
+/* ── LEADERSHIP ── */
+#leadership { background:#14141c; }
+.leadership-list { display:flex; flex-direction:column; gap:2px; }
+.leadership-item {
+display:grid; grid-template-columns:80px 1fr auto;
+gap:32px; align-items:start;
+background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+padding:32px 36px;
+transition:background .25s,border-color .25s;
+}
+.leadership-item:hover { background:rgba(201,168,76,.05); border-color:rgba(201,168,76,.2); }
+.li-year { font-family:var(–display); font-size:13px; color:var(–gold); letter-spacing:2px; padding-top:4px; }
+.li-body { display:flex; flex-direction:column; gap:8px; }
+.li-title { font-family:var(–display); font-size:26px; letter-spacing:1px; color:var(–off-white); }
+.li-org { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(–gold); opacity:.7; }
+.li-desc { color:var(–cream); opacity:.7; font-size:13px; max-width:640px; line-height:1.8; }
+.li-badge { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(–rust); border:1px solid var(–rust); padding:4px 10px; height:fit-content; white-space:nowrap; }
+
+/* ── AWARDS ── */
+#awards { background:#080808; }
+.awards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:2px; }
+.award-card {
+background:rgba(201,168,76,.03); border:1px solid rgba(201,168,76,.1);
+padding:28px 24px;
+transition:background .25s,border-color .25s;
+}
+.award-card:hover { background:rgba(201,168,76,.1); border-color:rgba(201,168,76,.35); }
+.award-icon { font-size:24px; margin-bottom:16px; color:rgba(201,168,76,0.5); width:24px; height:24px; }
+.award-name { font-family:var(–display); font-size:22px; letter-spacing:1.5px; color:var(–off-white); margin-bottom:6px; line-height:1.1; }
+.award-org { font-size:11px; letter-spacing:1px; color:var(–gold); opacity:.7; }
+
+/* ── SKILLS ── */
+#skills { background:#14141c; }
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:2px; }
+.skill-group {
+background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+padding:28px 24px;
+}
+.skill-group-title { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(–gold); margin-bottom:16px; }
+.skill-list { display:flex; flex-direction:column; gap:8px; }
+.skill-item { font-size:13px; color:var(–cream); opacity:.75; display:flex; align-items:center; gap:8px; }
+.skill-item::before { content:’’; width:6px; height:6px; background:var(–gold); border-radius:50%; flex-shrink:0; opacity:.5; }
+
+/* ── EDUCATION ── */
+#education { background:#080808; }
+.edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.edu-card {
+background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+padding:40px 36px;
+transition:border-color .25s;
+}
+.edu-card:hover { border-color:rgba(201,168,76,.3); }
+.edu-period { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(–gold); margin-bottom:12px; opacity:.7; }
+.edu-school { font-family:var(–display); font-size:32px; letter-spacing:1px; color:var(–off-white); margin-bottom:6px; }
+.edu-degree { font-family:var(–serif); font-style:italic; color:var(–cream); opacity:.7; margin-bottom:20px; font-size:15px; }
+.edu-detail { font-size:12px; color:var(–cream); opacity:.55; line-height:1.8; }
+.gpa-badge { display:inline-flex; align-items:baseline; gap:6px; background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.25); padding:8px 16px; margin-top:16px; }
+.gpa-num { font-family:var(–display); font-size:28px; color:var(–gold); }
+.gpa-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(–mid); }
+
+/* ── CONTACT ── */
+#contact {
+background:#080808; text-align:center;
+border-top:1px solid rgba(201,168,76,.1);
+padding:100px 52px;
+}
+.contact-title { font-family:var(–display); font-size:clamp(48px,8vw,100px); letter-spacing:2px; color:var(–off-white); margin-bottom:8px; }
+.contact-title span { color:var(–gold); }
+.contact-sub { font-family:var(–serif); font-style:italic; font-size:18px; color:var(–cream); opacity:.6; margin-bottom:48px; }
+.contact-links { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; }
+.contact-link {
+display:flex; align-items:center; gap:10px;
+font-size:12px; letter-spacing:2px; text-transform:uppercase;
+color:var(–cream); text-decoration:none; opacity:.6;
+border:1px solid rgba(255,255,255,.1); padding:14px 24px;
+transition:opacity .2s,border-color .2s,color .2s,background .2s;
+}
+.contact-link:hover { opacity:1; color:var(–gold); border-color:var(–gold); background:rgba(201,168,76,.06); }
+
+/* ── FOOTER ── */
+footer { background:#080808; padding:24px 52px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,.04); }
+footer span { font-size:11px; letter-spacing:1px; color:var(–mid); }
+
+/* ── ANIMATIONS ── */
+.fade-up { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+@media (max-width:900px) {
+nav { padding:16px 24px; }
+section { padding:72px 24px; }
+#hero { padding:0 24px 60px; }
+.about-grid, .project-featured, .edu-grid { grid-template-columns:1fr; }
+.project-featured-visual { min-height:200px; }
+.leadership-item { grid-template-columns:1fr; gap:12px; }
+.li-badge { width:fit-content; }
+footer { flex-direction:column; gap:8px; text-align:center; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+
+<nav>
+  <a class="nav-logo" href="#hero">SS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content fade-up">
+    <p class="hero-tag">// Class of 2026 · Newark, NJ · Builder · Founder</p>
+    <h1 class="hero-name">SAMUEL<br><span>SENYO</span></h1>
+    <p class="hero-subtitle">Engineer. Entrepreneur. Innovator.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Based In</span>
+        <span class="hero-meta-value">Newark, NJ</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Roots</span>
+        <span class="hero-meta-value">Ghanaian-American</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Focus</span>
+        <span class="hero-meta-value">AI · Robotics · Startups</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Email</span>
+        <span class="hero-meta-value">Senyosamuel7@gmail.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="section-label">// 01 — About</div>
+  <div class="section-title">Who I Am</div>
+  <div class="divider"></div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I'm a <strong>high school senior from Newark, NJ</strong> with Ghanaian roots, building at the intersection of artificial intelligence, robotics, and entrepreneurship. What started as a journey through sports pivoted into a full-on obsession with how technology can solve real problems for real people.</p>
+      <p>I captain a <strong>30+ student FRC robotics team</strong>, run two AI startups, and am actively networking with founders across the country. I don't just build things — I build systems, teams, and communities around ideas that matter.</p>
+      <p>My work spans <strong>AI product development</strong>, mechanical and electrical engineering, competitive robotics, and community service. I've been featured in the New York Times, earned full scholarships to study abroad, and placed in the top 10 programmers out of 70 in a competitive coding fellowship.</p>
+      <p>I'm not waiting until college to do the work. <strong>I'm doing it now.</strong></p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">30+</div>
+        <div class="stat-desc">Students Led on Robotics Team</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2</div>
+        <div class="stat-desc">AI Startups Founded</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100+</div>
+        <div class="stat-desc">Hours Volunteer Service</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">1500+</div>
+        <div class="stat-desc">Toiletry Bags for Families in Need</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+  <div class="section-label">// 02 — Projects</div>
+  <div class="section-title">What I'm Building</div>
+  <div class="divider"></div>
+
+  <!-- FRACTAL -->
+
+  <div class="project-featured fade-up" style="margin-bottom:24px;">
+    <div class="project-featured-visual" style="background:url('fractal_bg.webp') center/cover no-repeat; position:relative; overflow:hidden;">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,24,.45) 0%,rgba(8,8,16,.15) 100%);"></div>
+    </div>
+    <div class="project-featured-content">
+      <div>
+        <span class="project-tag">AI Startup · Active</span>
+        <div class="project-name">FRACTAL</div>
+        <div class="project-tagline">An idea-synthesis engine that maps concept relationships into interactive node graphs.</div>
+        <p class="project-desc">Fractal is an AI-powered knowledge mapping tool that transforms how people think and connect ideas. Instead of linear notes or scattered tabs, Fractal renders your thinking as a living, interactive graph — surfacing hidden relationships between concepts, clustering themes, and letting you navigate your knowledge spatially.</p>
+        <ul class="project-features">
+          <li>Ingests raw notes, text, or prompts and extracts semantic concept nodes automatically</li>
+          <li>Maps relationships between ideas as interactive, zoomable graph visualizations</li>
+          <li>Runs on LLaMA 3 8B locally on a Raspberry Pi — privacy-first, no cloud dependency</li>
+          <li>Allows users to explore their own mental models and find blind spots in their thinking</li>
+          <li>Designed for creatives, founders, and researchers who need to synthesize large idea spaces</li>
+        </ul>
+      </div>
+      <div class="project-tech">
+        <span class="tech-chip">LLaMA 3 8B</span>
+        <span class="tech-chip">Raspberry Pi</span>
+        <span class="tech-chip">Python</span>
+        <span class="tech-chip">React</span>
+        <span class="tech-chip">Node Graphs</span>
+        <span class="tech-chip">Local AI</span>
+      </div>
+    </div>
+  </div>
+
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+
+<nav>
+  <a class="nav-logo" href="#hero">SS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content fade-up">
+    <p class="hero-tag">// Class of 2026 · Newark, NJ · Builder · Founder</p>
+    <h1 class="hero-name">SAMUEL<br><span>SENYO</span></h1>
+    <p class="hero-subtitle">Engineer. Entrepreneur. Innovator.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Based In</span>
+        <span class="hero-meta-value">Newark, NJ</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Roots</span>
+        <span class="hero-meta-value">Ghanaian-American</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Focus</span>
+        <span class="hero-meta-value">AI · Robotics · Startups</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Email</span>
+        <span class="hero-meta-value">Senyosamuel7@gmail.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="section-label">// 01 — About</div>
+  <div class="section-title">Who I Am</div>
+  <div class="divider"></div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I'm a <strong>high school senior from Newark, NJ</strong> with Ghanaian roots, building at the intersection of artificial intelligence, robotics, and entrepreneurship. What started as a journey through sports pivoted into a full-on obsession with how technology can solve real problems for real people.</p>
+      <p>I captain a <strong>30+ student FRC robotics team</strong>, run two AI startups, and am actively networking with founders across the country. I don't just build things — I build systems, teams, and communities around ideas that matter.</p>
+      <p>My work spans <strong>AI product development</strong>, mechanical and electrical engineering, competitive robotics, and community service. I've been featured in the New York Times, earned full scholarships to study abroad, and placed in the top 10 programmers out of 70 in a competitive coding fellowship.</p>
+      <p>I'm not waiting until college to do the work. <strong>I'm doing it now.</strong></p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">30+</div>
+        <div class="stat-desc">Students Led on Robotics Team</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2</div>
+        <div class="stat-desc">AI Startups Founded</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100+</div>
+        <div class="stat-desc">Hours Volunteer Service</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">1500+</div>
+        <div class="stat-desc">Toiletry Bags for Families in Need</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+  <div class="section-label">// 02 — Projects</div>
+  <div class="section-title">What I'm Building</div>
+  <div class="divider"></div>
+
+  <!-- FRACTAL -->
+
+  <div class="project-featured fade-up" style="margin-bottom:24px;">
+
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+
+<nav>
+  <a class="nav-logo" href="#hero">SS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content fade-up">
+    <p class="hero-tag">// Class of 2026 · Newark, NJ · Builder · Founder</p>
+    <h1 class="hero-name">SAMUEL<br><span>SENYO</span></h1>
+    <p class="hero-subtitle">Engineer. Entrepreneur. Innovator.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Based In</span>
+        <span class="hero-meta-value">Newark, NJ</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Roots</span>
+        <span class="hero-meta-value">Ghanaian-American</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Focus</span>
+        <span class="hero-meta-value">AI · Robotics · Startups</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Email</span>
+        <span class="hero-meta-value">Senyosamuel7@gmail.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="section-label">// 01 — About</div>
+  <div class="section-title">Who I Am</div>
+  <div class="divider"></div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I'm a <strong>high school senior from Newark, NJ</strong> with Ghanaian roots, building at the intersection of artificial intelligence, robotics, and entrepreneurship. What started as a journey through sports pivoted into a full-on obsession with how technology can solve real problems for real people.</p>
+      <p>I captain a <strong>30+ student FRC robotics team</strong>, run two AI startups, and am actively networking with founders across the country. I don't just build things — I build systems, teams, and communities around ideas that matter.</p>
+      <p>My work spans <strong>AI product development</strong>, mechanical and electrical engineering, competitive robotics, and community service. I've been featured in the New York Times, earned full scholarships to study abroad, and placed in the top 10 programmers out of 70 in a competitive coding fellowship.</p>
+      <p>I'm not waiting until college to do the work. <strong>I'm doing it now.</strong></p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">30+</div>
+        <div class="stat-desc">Students Led on Robotics Team</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2</div>
+        <div class="stat-desc">AI Startups Founded</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100+</div>
+        <div class="stat-desc">Hours Volunteer Service</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">1500+</div>
+        <div class="stat-desc">Toiletry Bags for Families in Need</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+  <div class="section-label">// 02 — Projects</div>
+  <div class="section-title">What I'm Building</div>
+  <div class="divider"></div>
+
+  <!-- FRACTAL -->
+
+  <div class="project-featured fade-up" style="margin-bottom:24px;">
+
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+
+<nav>
+  <a class="nav-logo" href="#hero">SS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content fade-up">
+    <p class="hero-tag">// Class of 2026 · Newark, NJ · Builder · Founder</p>
+    <h1 class="hero-name">SAMUEL<br><span>SENYO</span></h1>
+    <p class="hero-subtitle">Engineer. Entrepreneur. Innovator.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Based In</span>
+        <span class="hero-meta-value">Newark, NJ</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Roots</span>
+        <span class="hero-meta-value">Ghanaian-American</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Focus</span>
+        <span class="hero-meta-value">AI · Robotics · Startups</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Email</span>
+        <span class="hero-meta-value">Senyosamuel7@gmail.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="section-label">// 01 — About</div>
+  <div class="section-title">Who I Am</div>
+  <div class="divider"></div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I'm a <strong>high school senior from Newark, NJ</strong> with Ghanaian roots, building at the intersection of artificial intelligence, robotics, and entrepreneurship. What started as a journey through sports pivoted into a full-on obsession with how technology can solve real problems for real people.</p>
+      <p>I captain a <strong>30+ student FRC robotics team</strong>, run two AI startups, and am actively networking with founders across the country. I don't just build things — I build systems, teams, and communities around ideas that matter.</p>
+      <p>My work spans <strong>AI product development</strong>, mechanical and electrical engineering, competitive robotics, and community service. I've been featured in the New York Times, earned full scholarships to study abroad, and placed in the top 10 programmers out of 70 in a competitive coding fellowship.</p>
+      <p>I'm not waiting until college to do the work. <strong>I'm doing it now.</strong></p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">30+</div>
+        <div class="stat-desc">Students Led on Robotics Team</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2</div>
+        <div class="stat-desc">AI Startups Founded</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100+</div>
+        <div class="stat-desc">Hours Volunteer Service</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">1500+</div>
+        <div class="stat-desc">Toiletry Bags for Families in Need</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+  <div class="section-label">// 02 — Projects</div>
+  <div class="section-title">What I'm Building</div>
+  <div class="divider"></div>
+
+  <!-- FRACTAL -->
+
+  <div class="project-featured fade-up" style="margin-bottom:24px;">
+
+```
+</div>
+<div class="project-featured-content">
+  <div>
+    <span class="project-tag">AI Startup · Active</span>
+    <div class="project-name">FRACTAL</div>
+    <div class="project-tagline">An idea-synthesis engine that maps concept relationships into interactive node graphs.</div>
+    <p class="project-desc">
+      Fractal is an AI-powered knowledge mapping tool that transforms how people think and connect ideas. Instead of linear notes or scattered tabs, Fractal renders your thinking as a living, interactive graph — surfacing hidden relationships between concepts, clustering themes, and letting you navigate your knowledge spatially. It's built for researchers, founders, students, and anyone who thinks in webs rather than lists.
+    </p>
+    <ul class="project-features">
+      <li>Ingests raw notes, text, or prompts and extracts semantic concept nodes automatically</li>
+      <li>Maps relationships between ideas as interactive, zoomable graph visualizations</li>
+      <li>Runs on LLaMA 3 8B locally on a Raspberry Pi — privacy-first, no cloud dependency</li>
+      <li>Allows users to explore their own mental models and find blind spots in their thinking</li>
+      <li>Designed for creatives, founders, and researchers who need to synthesize large idea spaces</li>
+    </ul>
+  </div>
+  <div class="project-tech">
+    <span class="tech-chip">LLaMA 3 8B</span>
+    <span class="tech-chip">Raspberry Pi</span>
+    <span class="tech-chip">Python</span>
+    <span class="tech-chip">React</span>
+    <span class="tech-chip">Node Graphs</span>
+    <span class="tech-chip">Local AI</span>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- FORMAL -->
+
+  <div class="project-featured fade-up" style="margin-bottom:48px;">
+    <div class="project-featured-visual" style="background:linear-gradient(135deg,#0d1208,#0a1005); order:2;">
+      <div class="project-icon-lg"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+    </div>
+    <div class="project-featured-content" style="order:1;">
+      <div>
+        <span class="project-tag">AI Startup · Active</span>
+        <div class="project-name">FORMAL</div>
+        <div class="project-tagline">A data-analyzing app that pulls financial, academic, and personal life data to generate personalized insights.</div>
+        <p class="project-desc">
+          Formal is a personal intelligence platform that aggregates data from every corner of your life — grades, finances, habits, goals, health — and uses AI to generate insights you'd never spot on your own. It grew out of real frustration: Samuel built early automation scripts to track his own GPA and homework, then realized the same infrastructure could power a full analytics suite. Formal is where those scripts became a product.
+        </p>
+        <ul class="project-features">
+          <li>Connects to academic platforms, financial accounts, and personal productivity tools</li>
+          <li>AI-generated weekly and monthly insight reports tailored to the individual</li>
+          <li>Trend detection: surfaces patterns in performance, spending, habits before they become problems</li>
+          <li>Goal-tracking layer with adaptive recommendations that evolve as your data changes</li>
+          <li>Designed for high school and college students who want data-driven self-improvement</li>
+        </ul>
+      </div>
+      <div class="project-tech">
+        <span class="tech-chip">Python</span>
+        <span class="tech-chip">React Native</span>
+        <span class="tech-chip">Swift</span>
+        <span class="tech-chip">Data APIs</span>
+        <span class="tech-chip">AI Analytics</span>
+        <span class="tech-chip">Figma</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formal Sub-Apps -->
+
+  <div class="fade-up" style="margin-bottom:64px;">
+    <div class="subapps-title">Formal — Internal Suite</div>
+    <div class="subapps-label">Apps that grew into Formal's core engine</div>
+    <div class="subapps-grid">
+      <div class="subapp-card">
+        <div class="subapp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="subapp-name">GPA Scanner</div>
+        <div class="subapp-desc">Automated grade scraping and GPA calculation tool. The first script Samuel built — reads academic portals and computes real-time GPA breakdowns by subject and weighted/unweighted.</div>
+      </div>
+      <div class="subapp-card">
+        <div class="subapp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <div class="subapp-name">Homework Automator</div>
+        <div class="subapp-desc">An early automation script that organized, scheduled, and tracked homework assignments. Built to solve Samuel's own time-management challenges — evolved into Formal's task intelligence layer.</div>
+      </div>
+      <div class="subapp-card">
+        <div class="subapp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v2m0 8v2m-4-6h8m-6-2a2 2 0 0 1 4 0c0 1.5-4 2-4 4h4"/></svg></div>
+        <div class="subapp-name">Finance Tracker</div>
+        <div class="subapp-desc">Personal finance module that pulls spending data and categorizes it automatically. Identifies saving opportunities and tracks budgets against goals in real time.</div>
+      </div>
+      <div class="subapp-card">
+        <div class="subapp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="subapp-name">Life Analytics Dashboard</div>
+        <div class="subapp-desc">The unified view layer — aggregates outputs from all modules into a single dashboard with charts, trend lines, and AI-generated summaries of your week, month, and quarter.</div>
+      </div>
+      <div class="subapp-card">
+        <div class="subapp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div class="subapp-name">Goal Engine</div>
+        <div class="subapp-desc">Adaptive goal-setting module that breaks down long-term objectives into weekly milestones. Uses your past performance data to set goals that are ambitious but achievable.</div>
+      </div>
+      <div class="subapp-card">
+        <div class="subapp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <div class="subapp-name">Smart Alerts</div>
+        <div class="subapp-desc">Proactive AI notification layer that flags anomalies — a grade drop, unusual spending spike, or missed milestone — before they compound. Actionable nudges, not noise.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Other Projects -->
+
+  <div class="projects-grid fade-up">
+    <div class="project-card">
+      <div class="card-header">
+        <div class="card-num">03</div>
+        <span class="card-status">Active</span>
+      </div>
+      <div class="card-title">ASPIRE</div>
+      <p class="card-desc">A career development platform for young innovators to "Connect, Grow, and Aspire." Helps students find internships, jobs, and programs, while advising on extracurriculars tailored to their dream career. Built as a website and mobile app.</p>
+      <div class="card-tech">
+        <span>React Native</span><span>Swift</span><span>Thunkable</span><span>Figma</span><span>JavaScript</span>
+      </div>
+    </div>
+
+```
+<div class="project-card">
+  <div class="card-header">
+    <div class="card-num">04</div>
+    <span class="card-status">Competition</span>
+  </div>
+  <div class="card-title">FRC ROBOT 2026</div>
+  <p class="card-desc">Lead build captain on Team 9439 Knights of Polaris for the FRC 2026 "Reefscape" season. Oversees mechanical design (27"×27" frame, belly pan CAD), YAGSL swerve drive integration, PathPlannerLib autonomous routines, and team strategy across 30+ students.</p>
+  <div class="card-tech">
+    <span>Java</span><span>WPILib</span><span>YAGSL</span><span>PathPlanner</span><span>Onshape</span><span>GitHub</span>
+  </div>
+</div>
+
+<div class="project-card">
+  <div class="card-header">
+    <div class="card-num">05</div>
+    <span class="card-status">Fellowship</span>
+  </div>
+  <div class="card-title">KKCF PROJECTS</div>
+  <p class="card-desc">Built during the Karim Kharbouch Coding Fellowship — a competitive program with 100+ hours of professional development. Ranked Top 10 out of 70 programmers. Projects focused on UX/UI, JavaScript development, and full-stack web design.</p>
+  <div class="card-tech">
+    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Figma</span><span>UX/UI</span>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+
+<section id="leadership">
+  <div class="section-label">// 03 — Leadership</div>
+  <div class="section-title">Leading Others</div>
+  <div class="divider"></div>
+  <div class="leadership-list fade-up">
+
+```
+<div class="leadership-item">
+  <div class="li-year">2024–<br>NOW</div>
+  <div class="li-body">
+    <div class="li-title">Captain & Build Captain</div>
+    <div class="li-org">Knights of Polaris FRC Team 9439</div>
+    <div class="li-desc">Lead a 30+ student robotics team across two schools in competitions throughout New Jersey. Oversee mechanical engineering, electrical systems, programming, and strategic planning. Won multiple awards including the Rookie of the Year (ROTY) and Inspiration Award. Manage the full robot build cycle from CAD design to competition-ready hardware.</div>
+  </div>
+  <span class="li-badge">ROTY Award</span>
+</div>
+
+<div class="leadership-item">
+  <div class="li-year">2024–<br>2025</div>
+  <div class="li-body">
+    <div class="li-title">Advisory Leader</div>
+    <div class="li-org">NSA Washington Park — Student Advisory</div>
+    <div class="li-desc">Mentored and advised 20–30 students on academics, personal development, and life decisions. Created a supportive environment for student growth, led school activities, and served as a consistent point of guidance for peers navigating high school challenges.</div>
+  </div>
+  <span class="li-badge">Mentor</span>
+</div>
+
+<div class="leadership-item">
+  <div class="li-year">2024–<br>2025</div>
+  <div class="li-body">
+    <div class="li-title">VP of Finance & Officer</div>
+    <div class="li-org">NSA LPHS DECA</div>
+    <div class="li-desc">Oversaw a student-run business that generated $1,000+ in revenue through personalized embroidered merchandise — shirts, sweaters, and more — sold within and outside the school community. Applied financial management, team coordination, and entrepreneurial thinking in a competitive academic business environment.</div>
+  </div>
+  <span class="li-badge">$1K+ Revenue</span>
+</div>
+
+<div class="leadership-item">
+  <div class="li-year">2024–<br>NOW</div>
+  <div class="li-body">
+    <div class="li-title">InTandem Fellow</div>
+    <div class="li-org">InTandem — Featured in NY Times</div>
+    <div class="li-desc">Selected as a fellow in a program uniting young speakers to amplify youth voices on world issues, emerging technology, the future of work, and education. Featured in a New York Times article. Built public speaking, critical thinking, and cross-cultural communication skills alongside peers from across the country.</div>
+  </div>
+  <span class="li-badge">NY Times</span>
+</div>
+
+<div class="leadership-item">
+  <div class="li-year">2023–<br>NOW</div>
+  <div class="li-body">
+    <div class="li-title">ACE Mentorship Fellow</div>
+    <div class="li-org">ACE Mentorship Program — Newark</div>
+    <div class="li-desc">Active apprentice in the Architecture, Construction, and Engineering Mentorship Program. Gained hands-on experience in real-world design and building projects, collaborating directly with industry professionals to develop technical skills and contribute to innovative team solutions.</div>
+  </div>
+  <span class="li-badge">AEC Industry</span>
+</div>
+
+<div class="leadership-item">
+  <div class="li-year">2024–<br>NOW</div>
+  <div class="li-body">
+    <div class="li-title">LOT21C Service Fellow</div>
+    <div class="li-org">NJIT TRIO Program</div>
+    <div class="li-desc">Accumulated 100+ hours of volunteer and community service. Coordinated production of 1,500+ bags of toiletries for people in need. Personally fundraised to complete 32 bags, earning recognition from the Newark Board of Education for outstanding community impact.</div>
+  </div>
+  <span class="li-badge">1500+ Bags</span>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+
+<section id="awards">
+  <div class="section-label">// 04 — Recognition</div>
+  <div class="section-title">Awards & Honors</div>
+  <div class="divider"></div>
+  <div class="awards-grid fade-up">
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M12 17v4"/><path d="M8 21h8"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/></svg></div>
+      <div class="award-name">FRC Rookie of the Year (ROTY)</div>
+      <div class="award-org">FIRST Robotics Competition</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div class="award-name">FRC Inspiration Award</div>
+      <div class="award-org">FIRST Robotics Competition</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="15" r="5"/><path d="M8.56 2.9A7 7 0 0 1 19 9v1H5V9a7 7 0 0 1 3.56-6.1"/><line x1="12" y1="10" x2="12" y2="20"/></svg></div>
+      <div class="award-name">ACE Mentor Award</div>
+      <div class="award-org">ACE Mentorship Program</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="award-name">Distinctive Programmer — Top 10 of 70</div>
+      <div class="award-org">Karim Kharbouch Coding Fellowship</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 3 16.5 4.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+      <div class="award-name">CIEE Global Navigators Scholarship</div>
+      <div class="award-org">Japan Robotics & Engineering — Full Scholarship</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <div class="award-name">Uncommon Scholarship</div>
+      <div class="award-org">Academic Merit</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><line x1="16" y1="8" x2="10" y2="8"/><line x1="16" y1="12" x2="10" y2="12"/><line x1="16" y1="16" x2="10" y2="16"/></svg></div>
+      <div class="award-name">Featured — New York Times</div>
+      <div class="award-org">InTandem Fellowship</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="15" r="6"/><path d="M8.56 2.9A7 7 0 0 1 19 9v1H5V9a7 7 0 0 1 3.56-6.1"/></svg></div>
+      <div class="award-name">SEC 1st Place — Boys Division</div>
+      <div class="award-org">Cross Country Athletics</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+      <div class="award-name">Honors Roll</div>
+      <div class="award-org">North Star Academy Washington Park</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div class="award-name">Pathways to Google — Code Next</div>
+      <div class="award-org">Google, Student 2024</div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="award-name">Newark Board of Education Recognition</div>
+      <div class="award-org">LOT21C Community Service</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+  <div class="section-label">// 05 — Skills</div>
+  <div class="section-title">Technical Arsenal</div>
+  <div class="divider"></div>
+  <div class="skills-grid fade-up">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-list">
+        <div class="skill-item">Java</div>
+        <div class="skill-item">Python</div>
+        <div class="skill-item">C++</div>
+        <div class="skill-item">Swift</div>
+        <div class="skill-item">JavaScript</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Frontend</div>
+      <div class="skill-list">
+        <div class="skill-item">React Native</div>
+        <div class="skill-item">HTML / CSS</div>
+        <div class="skill-item">Figma</div>
+        <div class="skill-item">Thunkable</div>
+        <div class="skill-item">UX/UI Design</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">AI & Data</div>
+      <div class="skill-list">
+        <div class="skill-item">LLaMA 3 8B</div>
+        <div class="skill-item">AI Integration</div>
+        <div class="skill-item">Google Sheets</div>
+        <div class="skill-item">Data Analytics</div>
+        <div class="skill-item">Automation</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Engineering</div>
+      <div class="skill-list">
+        <div class="skill-item">Onshape (CAD)</div>
+        <div class="skill-item">WPILib / FRC</div>
+        <div class="skill-item">YAGSL Swerve</div>
+        <div class="skill-item">PathPlanner</div>
+        <div class="skill-item">Mechanical Design</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Creative</div>
+      <div class="skill-list">
+        <div class="skill-item">Bass Guitar</div>
+        <div class="skill-item">Keyboard / Piano</div>
+        <div class="skill-item">Visual Design</div>
+        <div class="skill-item">Presentation Design</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Leadership</div>
+      <div class="skill-list">
+        <div class="skill-item">Team Management (30+)</div>
+        <div class="skill-item">Public Speaking</div>
+        <div class="skill-item">Startup Founding</div>
+        <div class="skill-item">Mentorship</div>
+        <div class="skill-item">Strategic Planning</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education">
+  <div class="section-label">// 06 — Education</div>
+  <div class="section-title">Academic Journey</div>
+  <div class="divider"></div>
+  <div class="edu-grid fade-up">
+    <div class="edu-card">
+      <div class="edu-period">Aug 2022 — June 2026</div>
+      <div class="edu-school">NORTH STAR ACADEMY<br>WASHINGTON PARK</div>
+      <div class="edu-degree">High School Diploma — Anticipated June 2026</div>
+      <div class="edu-detail">
+        AP Coursework: Literature, Environmental Science, Computer Science, World History, Language, Government<br><br>
+        Member of FRC robotics team, DECA, cross country, and advisory leadership.
+      </div>
+      <div class="gpa-badge">
+        <span class="gpa-num">2.8</span>
+        <span class="gpa-label">Unweighted GPA</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-period">July 2024 — Present</div>
+      <div class="edu-school">KARIM KHARBOUCH<br>CODING FELLOWSHIP</div>
+      <div class="edu-degree">Competitive Programming Fellow</div>
+      <div class="edu-detail">
+        100+ hours of professional development and technology training. Project-based, competitive environment focused on HTML, CSS, JavaScript, and UX/UI design.<br><br>
+        Ranked <strong style="color:var(--gold)">Top 10 out of 70 programmers</strong> — Distinctive Programmer award.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="section-label" style="justify-content:center;display:flex;">// 07 — Contact</div>
+  <div class="contact-title">LET'S<br><span>CONNECT</span></div>
+  <div class="contact-sub">Open to opportunities, collaborations, and conversations.</div>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:Senyosamuel7@gmail.com">
+      <span>✉</span> Senyosamuel7@gmail.com
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/samuel-senyo-79a0952b5/" target="_blank">
+      <span>↗</span> LinkedIn
+    </a>
+    <a class="contact-link" href="https://github.com/ols4m/FRC-2026" target="_blank">
+      <span>⌥</span> GitHub — FRC 2026
+    </a>
+    <a class="contact-link" href="tel:8624620941">
+      <span>☎</span> 862-462-0941
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Samuel Senyo — Newark, NJ</span>
+  <span>Builder · Founder · Engineer</span>
+</footer>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+(function animRing() {
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+// Fade up on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Stagger hero on load
+window.addEventListener('load', () => {
+  document.querySelector('.hero-content').style.transitionDelay = '0.2s';
+  document.querySelector('.hero-content').classList.add('visible');
+});
+</script>
+
+</body>
+</html>
